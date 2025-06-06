@@ -10,7 +10,7 @@
 ### 🔗リンク
 - Youtube : [GoldenPotato](https://www.youtube.com/@GoldenPotato-jp)
 - X : [GoldenPotato](https://x.com/GoldenPotatoJP)
-- プレイリスト : [ブロック崩し](https://www.youtube.com/playlist?list=PL19PnukweuV7pR0O66gzTi31-fuvHn9oJ)
+- プレイリスト : [pythonで地形生成](https://www.youtube.com/playlist?list=PL19PnukweuV7pR0O66gzTi31-fuvHn9oJ)
 
 ## 画面イメージ
 
