@@ -6,7 +6,7 @@ WINDOW_HEIGHT = 120
 RESOURCE_PATH = "/Users/macbook/goldenpotato/python/TerrainGeneration/v1.1/my_resource.pyxres"
 APP_TITLE = "TerrainGeneration"
 VERSION = "v1.1"
-TERRAIN_SEED = random.randint(1, 10000)
+TERRAIN_SEED = random.randint(1, 1e6)
 
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
@@ -42,7 +42,7 @@ class App:
         self.parameters_visible = False
         pyxel.run(self.update, self.draw)
     def update(self):
-        if(pyxel.btnp(pyxel.KEY_P)):self.parameters_visible = not self.parameters_visible
+        if(pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT)):self.parameters_visible = not self.parameters_visible
     def draw(self):
         pyxel.cls(0)
         self.draw_map()
@@ -62,7 +62,7 @@ class App:
                 elif(height < 0.6):
                     if(humidity < -0.4 and temperature > -0.4):pyxel.pset(j, i, 10) #砂漠
                     elif(temperature > 0.2 and humidity < -0.2):pyxel.pset(j, i, 9) #サバンナ
-                    elif(temperature < -0.4 and humidity > -0.4):pyxel.pset(j, i, 6) #雪原
+                    elif(temperature < -0.4 and humidity > -0.4):pyxel.pset(j, i, 8) #雪原
                     elif(height < 0):pyxel.pset(j, i, 11) #草原
                     else:pyxel.pset(j, i, 3) #森林
                 else:
