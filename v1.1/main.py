@@ -28,13 +28,14 @@ class App:
         pyxel.init(WINDOW_WIDTH, WINDOW_HEIGHT, title = APP_TITLE)
         pyxel.load(RESOURCE_PATH)
         self.terrain = Terrain(TERRAIN_SEED)
+        self.parameters_visible = None
         pyxel.run(self.update, self.draw)
     def update(self):
-        pass
+        self.parameters_visible = pyxel.btn(pyxel.KEY_P)
     def draw(self):
         pyxel.cls(0)
         self.draw_map()
-        pyxel.text(140, 110, VERSION, 13)
+        if(self.parameters_visible):self.show_parameters()
     def draw_map(self):
         for i in range(WINDOW_HEIGHT):
             for j in range(WINDOW_WIDTH):
@@ -48,5 +49,7 @@ class App:
                 elif(height < 0):pyxel.pset(j, i, 11)
                 elif(height < 0.6):pyxel.pset(j, i, 3)
                 else:pyxel.pset(j, i, 13)
+    def show_parameters(self):
+        pyxel.text(140, 110, VERSION, 0)
 
 App()
