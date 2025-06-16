@@ -27,6 +27,7 @@ class Terrain:
         temperature = pyxel.noise(x / 128, y / 128, 1)
         temperature += pyxel.noise(x / 64, y / 64, 1) / 2
         temperature += pyxel.noise(x / 32, y / 32, 1) / 4
+        temperature -= self.get_height(y, x) / 4
         return temperature
     def get_humidity(self, y:int, x:int):
         humidity = pyxel.noise(x / 128, y / 128, 2)
@@ -60,14 +61,14 @@ class App:
                 elif(height < -0.2):pyxel.pset(j, i, 12)
                 elif(is_waterfront):pyxel.pset(j, i, 15)
                 elif(height < 0.6):
-                    if(humidity < -0.4 and temperature > -0.4):pyxel.pset(j, i, 10) #砂漠
-                    elif(temperature > 0.2 and humidity < -0.2):pyxel.pset(j, i, 9) #サバンナ
-                    elif(temperature < -0.4 and humidity > -0.4):pyxel.pset(j, i, 8) #雪原
+                    if(humidity < -0.4 and temperature > 0):pyxel.pset(j, i, 10) #砂漠
+                    elif(temperature > 0.2 and humidity < 0):pyxel.pset(j, i, 9) #サバンナ
+                    elif(temperature < -0.4 and humidity > 0):pyxel.pset(j, i, 6) #雪原
                     elif(height < 0):pyxel.pset(j, i, 11) #草原
                     else:pyxel.pset(j, i, 3) #森林
                 else:
-                    if(temperature < -0.4 and humidity > -0.4):pyxel.pset(j, i, 7) #雪山
-                    elif(humidity < -0.4 and temperature > -0.4):pyxel.pset(j, i, 15) #砂山
+                    if(temperature < -0.4 and humidity > 0):pyxel.pset(j, i, 7) #雪山
+                    elif(humidity < -0.4 and temperature > 0):pyxel.pset(j, i, 15) #砂山
                     else:pyxel.pset(j, i, 13) #岩山
     def show_parameters(self):
         pyxel.text(5, 5, str(TERRAIN_SEED), 0)
